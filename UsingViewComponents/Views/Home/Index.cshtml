@@ -1,0 +1,21 @@
+﻿@*//View that displays the products and included button targeting Create action to render form to create a product*@
+
+@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Products";
+    Layout = "_Layout";
+}
+<table>
+    <thead>
+    <tr><th>Name</th><th>Price</th></tr>
+    </thead>
+    <tbody>
+    @foreach (var product in Model)
+    {
+        <tr><td>@product.Name</td>
+            <td>@product.Price</td></tr>
+    }
+    </tbody>
+</table>
+<a asp-action="Create" class="btn btn-primary">Create</a>
