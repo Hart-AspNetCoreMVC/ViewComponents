@@ -1,0 +1,21 @@
+﻿@model City
+@{
+    ViewData["Title"] = "Create City";
+    Layout = "_Layout";
+}
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="Name">Name:</label>
+        <input class="form-control" asp-for="Name"/>
+    </div>
+    <div>
+        <label asp-for="Country">Country:</label>
+        <input class="form-control" asp-for="Country"/>
+    </div>    <div>
+        <label asp-for="Population">Population:</label>
+        <input class="form-control" asp-for="Population"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a class="btn btn-secondary" asp-controller="Home"asp-action="Index">Cancel</a>
+</form>

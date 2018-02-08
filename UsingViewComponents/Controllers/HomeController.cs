@@ -14,18 +14,18 @@ namespace UsingViewComponents.Controllers
     public class HomeController : Controller
     {
 
-        private IProductRepository repository;
+        private IProductRepository _repository;
 
         //ctor with dependency on IProductRepository. When Mvc inits controller, it will consult service provider in setup, which will pass in the IPR object.
         public HomeController(IProductRepository repo)
         {
-            repository = repo;
+            _repository = repo;
         }
 
 
         public IActionResult Index()
         {
-            return View(repository.Products);
+            return View(_repository.Products);
         }
 
 
@@ -35,9 +35,10 @@ namespace UsingViewComponents.Controllers
         [HttpPost]
         public IActionResult Create(Product newProduct)
         {
-            repository.AddProduct(newProduct);
+            _repository.AddProduct(newProduct);
             return RedirectToAction("Index");
         }
+        
     }
     
 }

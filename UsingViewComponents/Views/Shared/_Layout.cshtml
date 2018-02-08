@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.ComponentModel
+@using UsingViewComponents.Components
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -7,18 +9,31 @@
     <link asp-href-include="/lib/bootstrap/dist/css/*.min.css" rel="stylesheet" />
 </head>
 <body class="m-1 p-1">
-<div class="m-1" p-1">
-    <div>
-        <div>
+<div class="m-1 p-1 bg-primary">
+    <div class="row text-white">
+        <div class="col-7">
             <h1>Products</h1>
             
         </div>
-        <div>
-            <div>City Placeholder</div>
+        <div class="col-5">
+            3 invoke statements that display 3 differenct components from within the layout
+            @*            simple invoke method that produces component in layout where showlist== false by defaut *@
+            <div class="">@await Component.InvokeAsync(nameof(CitySummary)) </div>
+
+            @*            invoke statement that passes in additional information to choose which component to render in layout*@
+
+            <div>@await Component.InvokeAsync("CitySummary", new {showlist = true})</div>
+
+@*            invoke statement that delivers content from 3rd party in the*@
+@*            <div>@await Component.InvokeAsync("PageSize")</div>*@
+            
+            <div>@await Component.InvokeAsync("ComboComponent")</div>
+
+
         </div>
     </div>
 </div>
-<div>
+<div class="m-1 p-1">
     @RenderBody()
 </div>
 </body>
